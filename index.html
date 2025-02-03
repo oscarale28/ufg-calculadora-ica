@@ -1,11 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculadora ICA</title>
-</head>
-<body>
-    
-</body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Calculadora ICA</h1>
+    <form action="">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="coliformes">Coliformes Fecales (NMP/100mL)</label>
+          <input type="number" name="coliformes" id="coliformes" />
+        </div>
+        <div class="form-group">
+          <label for="pH">pH (unidades)</label>
+          <input type="number" name="pH" id="pH" />
+        </div>
+        <div class="form-group">
+          <label for="DBO5">DBO5 (mg/L)</label>
+          <input type="number" name="DBO5" id="DBO5" />
+        </div>
+        <div class="form-group">
+          <label for="nitratos">Nitratos (NO3 en mg/L)</label>
+          <input type="number" name="nitratos" id="nitratos" />
+        </div>
+        <div class="form-group">
+          <label for="fosfatos">Fosfatos (PO4 en mg/L)</label>
+          <input type="number" name="fosfatos" id="fosfatos" />
+        </div>
+        <div class="form-group">
+          <label for="cambioTemp">Cambio en tempreatura (°C)</label>
+          <input type="number" name="cambioTemp" id="cambioTemp" />
+        </div>
+        <div class="form-group">
+          <label for="turbidez">Turbidez (FAU)</label>
+          <input type="number" name="turbidez" id="turbidez" />
+        </div>
+        <div class="form-group">
+          <label for="solidosDisueltos">Sólidos disueltos (mg/L)</label>
+          <input type="number" name="solidosDisueltos" id="solidosDisueltos" />
+        </div>
+        <div class="form-group">
+          <label for="oxigenoDisuelto">Oxígeno disuelto (%)</label>
+          <input
+            type="number"
+            name="oxigenoDisuelto"
+            id="oxigenoDisuelto"
+          />
+        </div>
+      </div>
+      <button type="submit">Calcular</button>
+    </form>
+  </body>
 </html>
