@@ -15,12 +15,16 @@ body {
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 40px 10px;
+
+    h1 {
+        font-size: 48px;
+        font-weight: 600;
+        color: rgb(41, 109, 60);
+        text-align: center;
+    }
 }
+
 
 form {
     display: flex;
@@ -102,8 +106,6 @@ form {
         background-color: #00afef;
         color: #00506d;
     }
-
-
 
     #result.excellent {
         background-color: #2e5395;
