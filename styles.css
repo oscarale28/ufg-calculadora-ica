@@ -14,6 +14,14 @@ body {
     height: 100vh;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -21,13 +29,14 @@ form {
     padding: 20px;
     border-radius: 10px;
     width: 600px;
+    max-width: 90vw;
     margin-top: 30px;
     gap: 20px;
 
 
     .form-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         gap: 20px;
 
         .form-group {
@@ -77,8 +86,8 @@ form {
 
 }
 
-@media (max-width: 45rem) {
+@media (min-width: 720px) {
     .form-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr !important;
     }
 }
