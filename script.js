@@ -37,6 +37,29 @@ const params = {
   }
 };
 
+const resultColors = {
+  25: {
+    className: "awful",
+    classification: "Pésima"
+  },
+  50: {
+    className: "bad",
+    classification: "Mala"
+  },
+  70: {
+    className: "regular",
+    classification: "Regular"
+  },
+  90: {
+    className: "good",
+    classification: "Buena"
+  },
+  100: {
+    className: "excellent",
+    classification: "Excelente"
+  }
+};
+
 function getColiformes() {
   const input = document.getElementById("coliformes").value;
 
@@ -130,18 +153,56 @@ function getOxigenoDisuelto() {
 function handleCalculate(e) {
   e.preventDefault();
 
-  getColiformes();
-  getpH();
-  getDBO5();
-  getNitratos();
-  getFosfatos();
-  getCambioTemp();
-  getTurbidez();
-  getSolidosDisueltos();
-  getOxigenoDisuelto();
+  const calculateButton = document.getElementById("calculate");
+  const resetButton = document.getElementById("reset");
 
-  const ica = Object.values(params).reduce((acc, param) => acc + (param.subi * param.wi), 0);
+  result.classList.remove("show");
+  calculateButton.disabled = true;
+  resetButton.disabled = true;
+  calculateButton.innerHTML = "Calculando...";
 
-  alert(`El ICA es: ${ica}`);
+  setTimeout(() => {
+    getColiformes();
+    getpH();
+    getDBO5();
+    getNitratos();
+    getFosfatos();
+    getCambioTemp();
+    getTurbidez();
+    getSolidosDisueltos();
+    getOxigenoDisuelto();
 
+    const ica = Object.values(params)
+      .reduce((acc, param) => acc + param.subi * param.wi, 0)
+      .toFixed(2);
+
+    const result = document.getElementById("result");
+    const icaText = document.getElementById("ica");
+    const resultClassification = document.getElementById(
+      "result-classification"
+    );
+    calculateButton.disabled = false;
+    calculateButton.innerHTML = "Calcular";
+    resetButton.disabled = false;
+    result.classList.add("show");
+    icaText.innerHTML = `El ICA es: ${ica}`;
+
+    for (const [maxValue, { className, classification }] of Object.entries(
+      resultColors
+    )) {
+      if (ica <= maxValue) {
+        result.classList.add(className);
+        resultClassification.innerHTML = `Clasificación: ${classification}`;
+        break;
+      }
+    }
+  }, 2500);
+}
+
+function resetForm() {
+  const form = document.getElementById("form");
+
+  const result = document.getElementById("result");
+  result.classList.remove("show");
+  form.reset();
 }
