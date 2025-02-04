@@ -62,7 +62,7 @@ const resultColors = {
 
 
 // Puntos para la interpolación - me lo dio la IA xd
-const interpolatePoints = {
+const endpoints = {
   coliformes: { x1: 0, x2: 100000, y1: 1, y2: 3 },
   pH: { x1: 2, x2: 10, y1: 2, y2: 3 },
   DBO5: { x1: 0, x2: 30, y1: 1, y2: 2 },
