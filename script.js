@@ -60,13 +60,32 @@ const resultColors = {
   }
 };
 
+
+// Puntos para la interpolación - me lo dio la IA xd
+const interpolatePoints = {
+  coliformes: { x1: 0, x2: 100000, y1: 1, y2: 3 },
+  pH: { x1: 2, x2: 10, y1: 2, y2: 3 },
+  DBO5: { x1: 0, x2: 30, y1: 1, y2: 2 },
+  nitratos: { x1: 0, x2: 100, y1: 1, y2: 2 },
+  fosfatos: { x1: 0, x2: 10, y1: 1, y2: 5 },
+  cambioTemp: { x1: 0, x2: 15, y1: 1, y2: 9 },
+  turbidez: { x1: 0, x2: 100, y1: 1, y2: 5 },
+  solidosDisueltos: { x1: 0, x2: 500, y1: 1, y2: 3 },
+  oxigenoDisuelto: { x1: 60, x2: 140, y1: 0, y2: 47 } // Se asume que a 60% saturación el subíndice es 0 y a 140% es 47.
+};
+
+function interpolate(x, x1, x2, y1, y2) {
+  return y1 + ((x - x1) / (x2 - x1)) * (y2 - y1);
+}
+
 function getColiformes() {
-  const input = document.getElementById("coliformes").value;
+  const input = parseFloat(document.getElementById("coliformes").value);
 
   if (input > 100000) {
     params.coliformes.subi = 3;
   } else {
     // Realizar calculo con interpolacion
+    params.coliformes.subi = interpolate(input, endpoints.coliformes.x1, endpoints.coliformes.x2, endpoints.coliformes.y1, endpoints.coliformes.y2);
   }
 }
 
@@ -78,7 +97,7 @@ function getpH() {
   } else if (input >= 10) {
     params.pH.subi = 3;
   } else {
-    // Realizar calculo
+    params.pH.subi = interpolate(input, endpoints.pH.x1, endpoints.pH.x2, endpoints.pH.y1, endpoints.pH.y2);
   }
 }
 
@@ -89,6 +108,7 @@ function getDBO5() {
     params.DBO5.subi = 2;
   } else {
     // Realizar calculo
+    params.DBO5.subi = interpolate(input, endpoints.DBO5.x1, endpoints.DBO5.x2, endpoints.DBO5.y1, endpoints.DBO5.y2);
   }
 }
 
@@ -99,6 +119,7 @@ function getNitratos() {
     params.nitratos.subi = 2;
   } else {
     // Realizar calculo
+    params.nitratos.subi = interpolate(input, endpoints.nitratos.x1, endpoints.nitratos.x2, endpoints.nitratos.y1, endpoints.nitratos.y2);
   }
 }
 
@@ -109,6 +130,7 @@ function getFosfatos() {
     params.fosfatos.subi = 5;
   } else {
     // Realizar calculo
+    params.fosfatos.subi = interpolate(input, endpoints.fosfatos.x1, endpoints.fosfatos.x2, endpoints.fosfatos.y1, endpoints.fosfatos.y2);
   }
 }
 
@@ -117,6 +139,8 @@ function getCambioTemp() {
 
   if (input >= 10) {
     params.cambioTemp.subi = 2;
+  } else {
+    params.cambioTemp.subi = interpolate(input, endpoints.cambioTemp.x1, endpoints.cambioTemp.x2, endpoints.cambioTemp.y1, endpoints.cambioTemp.y2);
   }
 }
 
@@ -126,7 +150,7 @@ function getTurbidez() {
   if (input > 100) {
     params.turbidez.subi = 5;
   } else {
-    // Realizar calculo
+    params.turbidez.subi = interpolate(input, endpoints.turbidez.x1, endpoints.turbidez.x2, endpoints.turbidez.y1, endpoints.turbidez.y2);
   }
 }
 
@@ -137,6 +161,7 @@ function getSolidosDisueltos() {
     params.solidosDisueltos.subi = 5;
   } else {
     // Realizar calculo
+    params.solidosDisueltos.subi = interpolate(input, endpoints.solidosDisueltos.x1, endpoints.solidosDisueltos.x2, endpoints.solidosDisueltos.y1, endpoints.solidosDisueltos.y2);
   }
 }
 
@@ -147,6 +172,7 @@ function getOxigenoDisuelto() {
     params.oxigenoDisuelto.subi = 47;
   } else {
     // Realizar calculo
+    params.oxigenoDisuelto.subi = interpolate(input, endpoints.oxigenoDisuelto.x1, endpoints.oxigenoDisuelto.x2, endpoints.oxigenoDisuelto.y1, endpoints.oxigenoDisuelto.y2);
   }
 }
 
