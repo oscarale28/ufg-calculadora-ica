@@ -232,3 +232,5 @@ function resetForm() {
   result.classList.remove("show");
   form.reset();
 }
+
+// DAME PERMISOSOOOOOSOOSOSOS
