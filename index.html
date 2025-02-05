@@ -24,12 +24,22 @@
               name="coliformes"
               id="coliformes"
               placeholder="100,000"
+              min="0"
+              step=".01"
               required
             />
           </div>
           <div class="form-group">
             <label for="pH">pH (unidades)</label>
-            <input type="number" name="pH" id="pH" placeholder="2" required />
+            <input
+              type="number"
+              name="pH"
+              id="pH"
+              placeholder="2"
+              min="0"
+              step=".01"
+              required
+            />
           </div>
           <div class="form-group">
             <label for="DBO5">DBO5 (mg/L)</label>
@@ -38,6 +48,8 @@
               name="DBO5"
               id="DBO5"
               placeholder="30"
+              min="0"
+              step=".01"
               required
             />
           </div>
@@ -48,6 +60,8 @@
               name="nitratos"
               id="nitratos"
               placeholder="100"
+              min="0"
+              step=".01"
               required
             />
           </div>
@@ -58,9 +72,12 @@
               name="fosfatos"
               id="fosfatos"
               placeholder="10"
+              min="0"
+              step=".01"
               required
             />
           </div>
+
           <div class="form-group">
             <label for="cambioTemp">Cambio en tempreatura (°C)</label>
             <input
@@ -68,9 +85,11 @@
               name="cambioTemp"
               id="cambioTemp"
               placeholder="15"
+              step=".01"
               required
             />
           </div>
+
           <div class="form-group">
             <label for="turbidez">Turbidez (FAU)</label>
             <input
@@ -78,9 +97,12 @@
               name="turbidez"
               id="turbidez"
               placeholder="101"
+              min="0"
+              step=".01"
               required
             />
           </div>
+
           <div class="form-group">
             <label for="solidosDisueltos">Sólidos disueltos (mg/L)</label>
             <input
@@ -88,6 +110,8 @@
               name="solidosDisueltos"
               id="solidosDisueltos"
               placeholder="500"
+              min="0"
+              step=".01"
               required
             />
           </div>
@@ -98,6 +122,8 @@
               name="oxigenoDisuelto"
               id="oxigenoDisuelto"
               placeholder="140"
+              min="0"
+              step=".01"
               required
             />
           </div>
@@ -111,7 +137,6 @@
         <button type="submit" id="calculate">Calcular</button>
         <button type="reset" id="reset">Reiniciar</button>
       </form>
-
     </div>
     <script src="script.js"></script>
   </body>
